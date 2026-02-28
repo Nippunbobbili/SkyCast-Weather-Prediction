@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SkyCast Your Daily Weather Forecast</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-white">
+
+<div class="container mt-5">
+    <div class="card bg-secondary p-4 shadow-lg">
+
+        <h2 class="text-center mb-4">SkyCast 🌤</h2>
+
+        <form action="/weather" method="get" class="d-flex justify-content-center mb-4">
+            <input type="text" name="city" class="form-control w-50 me-2" placeholder="Enter City">
+            <button type="submit" class="btn btn-warning">Get Weather</button>
+        </form>
+
+        <div th:if="${temp}" class="text-center">
+            <h3 th:text="${city} " style="color: white"></h3>
+            <h1 th:text="${temp} + ' °C'"></h1>
+            <p th:text="${description}"></p>
+
+            <hr class="bg-light">
+
+            <div class="row">
+                <div class="col">
+                    <p>Humidity</p>
+                    <h5 th:text="${humidity} + ' %'" ></h5>
+                </div>
+                <div class="col">
+                    <p>Wind</p>
+                    <h5 th:text="${wind} + ' km/h'"></h5>
+                </div>
+                <div class="col">
+                    <p>Sunrise</p>
+                    <h5 th:text="${sunrise}"></h5>
+                </div>
+                <div class="col">
+                    <p>Sunset</p>
+                    <h5 th:text="${sunset}"></h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
